@@ -1,0 +1,11 @@
+body {
+    background-image: url("../image/body.jpg");
+}
+.containers {
+    text-align: center;
+}
+.timer {
+    font-size: 15px;
+    color: black;
+    font-weight: bold;
+}

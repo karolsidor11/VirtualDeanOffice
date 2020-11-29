@@ -1,11 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Wirtualny dziekanat</title>
+    <h:outputScript library="script" name="general.js"/>
+    <h:outputStylesheet library="css" name="style.css"/>
+</h:head>
+<h:body onload="timer()">
+    <div>
+        <div>
+            <h:outputText id="date" styleClass="timer"> </h:outputText><br/>
+            <h:outputText id="time" styleClass="timer"> </h:outputText>
+        </div>
+    </div>
+    <div class="containers">
+        <div>
+            <h:graphicImage style="width: 120px; height: 120px; text-align: center"
+                            library="image"
+                            name="logo.jpg"/>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2"></div>
+            <h2 style="text-align: center; color: darkblue" class="col-sm-4">Logowanie do systemu</h2>
+        </div>
+
+        <div class="containers">
+            <h:form id="form">
+                <div style="text-align: left; margin-left:44%; width: 200px;" class="col-sm-4">
+                    <p:outputLabel for="email" style="text-align: center"> Podaj e-mail:</p:outputLabel>
+                    <p:inputText id="email" value="#{login.email}"
+                                 required="true"
+                                 requiredMessage="Email jest wymagany."
+                                 placeholder="Wpisz email" style="width: 240px">
+                        <f:validateLength minimum="2"/>
+                        <f:param name="email" value="#{login.email}"/>
+                    </p:inputText>
+
+                    <p:outputLabel for="password">Hasło:</p:outputLabel>
+                    <p:password id="password" value="#{login.password}"
+                                required="true"
+                                requiredMessage="Hasło jest wymagane."
+                                placeholder="Wpisz hasło" style="width: 240px">
+                        <f:validateLength minimum="2"/>
+                        <f:param name="password" value="#{login.password}"/>
+                    </p:password>
+                </div>
+                <br/>
+                <div class="col-sm-4">
+                    <p:commandButton style="background-color: dodgerblue; width: 245px;"
+                                     styleClass="ui-priority-primary"
+                                     value="Zaloguj sie" update="form"
+                                     action="#{login.checkLoginDetails()}"/>
+                </div>
+            </h:form>
+        </div>
+    </div>
+</h:body>
 </html>
