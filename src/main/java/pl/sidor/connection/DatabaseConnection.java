@@ -1,7 +1,8 @@
-package connection;
+package pl.sidor.connection;
 
 import org.hibernate.annotations.common.util.impl.LoggerFactory;
 import org.jboss.logging.Logger;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
@@ -20,7 +21,7 @@ public class DatabaseConnection {
                 entityManager = Persistence.createEntityManagerFactory(CONNECTION_NAME).createEntityManager();
             } catch (Exception e) {
                 log.error("Błąd połączenia  z bazą danych MySQL.");
-                throw new IllegalStateException();
+                throw new RuntimeException("Błąd połączenia  z bazą danych MySQL.");
             }
             return entityManager;
         }
