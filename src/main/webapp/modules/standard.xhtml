@@ -4,11 +4,102 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 <h:head>
     <title>Wirtualny Dziekanat</title>
+    <h:outputScript library="script" name="general.js"/>
+    <h:outputStylesheet library="css" name="style.css"/>
 </h:head>
-<h:body>
+<h:body onload="timer()">
+    <div id="headers">
+        <div id="logo" style="float: left">
+            <h:graphicImage
+                    style="width: 100px; margin-left: 5%; height: 100px"
+                    library="image" name="logo.jpg"/>
+        </div>
+        <div style="float: left; margin-left: 30px; margin-top: 30px">
+            <div class="name1">POLITECHNIKA</div>
+            <div class="name2">LUBELSKA</div>
+        </div>
+        <div>
+            <h1 class="dean">Wirtualny dziekanat</h1>
+        </div>
+    </div>
+    <br/><br/>
+    <br/><br/>
+
+    <p:tabView style="height: auto">
+        <p:tab title="ANKIETY">
+            <div id="ankiety">
+                <h2 style="text-align: center">Nie znaleziono ankiet dla podanych kryteriów.</h2>
+            </div>
+        </p:tab>
+        <p:tab title="OGŁOSZENIA">
+            <div id="ogloszenia">
+                <h2 style="text-align: center">BRAK OGŁOSZEŃ</h2>
+            </div>
+        </p:tab>
+        <p:tab title="MOJE DANE">
+            <div style="float: left">
+                <h:graphicImage style="width: 200px; align-content: center; height: 300px" library="image"
+                                name="anonymous.jpg"/>
+                <div style="text-align: center;font-size: x-large; font-weight: bold">#{login.personalData()}</div>
+            </div>
+            <div style="text-align: center">
+                <h1>Dane podstawowe</h1>
+                <div style="text-align: center" class="col-sm-4">
+                    <p:panelGrid columns="2" style="margin-right: auto; margin-left: auto; width: 35%">
+
+                        <h:outputText value="Imie:"/>
+                        <h:outputText value="#{login.currentStudent.name}"/>
+
+                        <h:outputText value="Nazwisko:"/>
+                        <h:outputText value="#{login.currentStudent.lastName}"/>
+
+                        <h:outputText value="Email:"/>
+                        <h:outputText value="#{login.currentStudent.email}"/>
+
+                        <h:outputText value="Hasło:"/>
+                        <h:outputText id="password" value="*******"/>
+
+                        <h:outputText value="Płeć:"/>
+                        <h:outputText value="#{login.currentStudent.gender}"/>
+
+                        <h:outputText value="Czy Student:"/>
+                        <h:outputText value="TAK"/>
+
+                        <h:outputText value="Adres:"/>
+                        <h:outputText value="#{login.currentStudent.addres}"/>
+                    </p:panelGrid>
+                </div>
+            </div>
+            <br/><br/><br/><br/>
+            <br/><br/><br/><br/>
+        </p:tab>
+
+        <p:tab title="MOJE STUDIA">
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:outputText value="Not implemented yet."/>
+            </h:panelGrid>
+        </p:tab>
+
+        <p:tab title="AKADEMIKI">
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:outputText value="Not implemented yet."/>
+            </h:panelGrid>
+        </p:tab>
+
+        <p:tab title="PLAGIAT.PL">
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:outputText value="Not implemented yet."/>
+            </h:panelGrid>
+        </p:tab>
+
+        <p:tab title="ZMIANA HASŁA" titleStyle="height: complex">
+            <h:outputText value="Not implemented yet."/>
+        </p:tab>
+    </p:tabView>
 
 </h:body>
 </html>

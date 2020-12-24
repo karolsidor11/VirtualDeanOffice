@@ -9,3 +9,24 @@ body {
     color: black;
     font-weight: bold;
 }
+.dean {
+    margin-left: 40%;
+    color: darkblue;
+    font-size: 45px;
+}
+.name1 {
+    color: darkblue;
+    font-size: medium;
+    font-weight: bold
+}
+.name2 {
+    color: darkblue;
+    font-size: xx-large;
+    font-weight: bold
+}
+.errors {
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    color: red;
+}

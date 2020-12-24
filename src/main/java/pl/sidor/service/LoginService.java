@@ -21,4 +21,14 @@ public class LoginService {
         }
         return Optional.fromNullable((Student) query.getResultList().get(0));
     }
+
+    public Optional<Student> findStudentByEmail(String email){
+        Query query = entityManager.createQuery("select s from Student s where s.email=:email");
+        query.setParameter("email", email);
+
+        if (query.getResultList().isEmpty()) {
+            return Optional.absent();
+        }
+        return Optional.fromNullable((Student) query.getResultList().get(0));
+    }
 }
