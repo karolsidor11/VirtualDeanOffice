@@ -35,8 +35,6 @@
                 <div style="text-align: left; margin-left:44%; width: 200px;" class="col-sm-4">
                     <p:outputLabel for="email" style="text-align: center"> Podaj e-mail:</p:outputLabel>
                     <p:inputText id="email" value="#{login.email}"
-                                 required="true"
-                                 requiredMessage="Email jest wymagany."
                                  placeholder="Wpisz email" style="width: 240px">
                         <f:validateLength minimum="2"/>
                         <f:param name="email" value="#{login.email}"/>
@@ -44,8 +42,6 @@
 
                     <p:outputLabel for="password">Hasło:</p:outputLabel>
                     <p:password id="password" value="#{login.password}"
-                                required="true"
-                                requiredMessage="Hasło jest wymagane."
                                 placeholder="Wpisz hasło" style="width: 240px">
                         <f:validateLength minimum="2"/>
                         <f:param name="password" value="#{login.password}"/>

@@ -8,6 +8,7 @@ import pl.sidor.entity.general.Student;
 import pl.sidor.exception.ExceptionFactory;
 import pl.sidor.service.LoginService;
 import pl.sidor.util.StringUtil;
+import pl.sidor.validation.LoginValidation;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -25,14 +26,21 @@ public class LoginController implements Serializable {
     private String email;
     private String password;
     private LoginService loginService;
+    private LoginValidation loginValidation;
     private Student currentStudent;
 
     public LoginController() {
         DatabaseConnection.getInstance();
         this.loginService = new LoginService();
+        this.loginValidation = new LoginValidation();
     }
 
     public String checkLoginDetails() {
+        if (loginValidation.validateLoginData(email, password)) {
+            ExceptionFactory.requiredLoginData();
+            return "";
+        }
+
         Optional<Student> student = loginService.findStudentByEmialAndPassword(email, StringUtil.convertMD5(password));
         if (!student.isPresent()) {
             ExceptionFactory.incorrectLoginData();

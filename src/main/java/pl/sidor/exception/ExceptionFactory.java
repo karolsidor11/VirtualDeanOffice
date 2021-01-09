@@ -14,4 +14,10 @@ public class ExceptionFactory {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, message);
     }
+
+    public static void requiredLoginData(){
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, MessageException.REQUIRED_LOGIN_DATA.getMessage(), null);
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, message);
+    }
 }
