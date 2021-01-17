@@ -20,7 +20,7 @@ public class BaseEntity implements Serializable {
     private Long id;
 
     @Column
-    private UUID uuid;
+    private UUID uuid = UUID.randomUUID();
 
     @Override
     public boolean equals(Object o) {

@@ -69,8 +69,20 @@
                         <h:outputText value="Czy Student:"/>
                         <h:outputText value="TAK"/>
 
-                        <h:outputText value="Adres:"/>
-                        <h:outputText value="#{login.currentStudent.addres}"/>
+                        <h:outputText value="Państwo:"/>
+                        <h:outputText value="#{login.currentStudent.addres.getCountry()}"/>
+
+                        <h:outputText value="Miasto:"/>
+                        <h:outputText value="#{login.currentStudent.addres.getCity()}"/>
+
+                        <h:outputText value="Ulica:"/>
+                        <h:outputText value="#{login.currentStudent.addres.getStreet()}"/>
+
+                        <h:outputText value="Kod pocztowy:"/>
+                        <h:outputText value="#{login.currentStudent.addres.getZipCode()}"/>
+
+                        <h:outputText value="Numer domu:"/>
+                        <h:outputText value="#{login.currentStudent.addres.getHouseNumber()}"/>
                     </p:panelGrid>
                 </div>
             </div>

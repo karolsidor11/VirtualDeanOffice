@@ -40,7 +40,7 @@ public class LoginServiceTest {
         String password = "fa27ef3ef6570e32a79";
 
         // when:
-        when(loginService.findStudentByEmialAndPassword(email, password)).thenReturn(TestData.createStudent());
+        when(loginService.findStudentByEmialAndPassword(email, password)).thenReturn(TestData.createOptionalStudent());
         Optional<Student> student = loginService.findStudentByEmialAndPassword(email, password);
 
         // then:
@@ -55,7 +55,7 @@ public class LoginServiceTest {
         String email = "nowak@wp.pl";
 
         // when:
-        when(loginService.findStudentByEmail(email)).thenReturn(TestData.createStudent());
+        when(loginService.findStudentByEmail(email)).thenReturn(TestData.createOptionalStudent());
         Optional<Student> student = loginService.findStudentByEmail(email);
 
         // then:

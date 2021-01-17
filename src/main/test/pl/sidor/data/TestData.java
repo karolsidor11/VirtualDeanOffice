@@ -6,7 +6,7 @@ import pl.sidor.entity.general.Student;
 
 public class TestData {
 
-    public static Optional<Student> createStudent() {
+    public static Optional<Student> createOptionalStudent() {
         return Optional.of(Student.builder()
                 .name("Jan")
                 .lastName("Nowak")
@@ -15,6 +15,17 @@ public class TestData {
                 .gender("mężczyzna")
                 .addres(createAdres())
                 .build());
+    }
+
+    public static Student createStudent() {
+        return Student.builder()
+                .name("Jan")
+                .lastName("Nowak")
+                .email("nowak@wp.pl")
+                .password("fa27ef3ef6570e32a79")
+                .gender("mężczyzna")
+                .addres(createAdres())
+                .build();
     }
 
     public static Adres createAdres() {
