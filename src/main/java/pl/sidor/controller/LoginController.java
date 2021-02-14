@@ -3,7 +3,6 @@ package pl.sidor.controller;
 import com.google.common.base.Optional;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import pl.sidor.connection.DatabaseConnection;
 import pl.sidor.entity.general.Student;
 import pl.sidor.exception.ExceptionFactory;
 import pl.sidor.service.LoginService;
@@ -30,7 +29,6 @@ public class LoginController implements Serializable {
     private Student currentStudent;
 
     public LoginController() {
-        DatabaseConnection.getInstance();
         this.loginService = new LoginService();
         this.loginValidation = new LoginValidation();
     }
@@ -47,7 +45,7 @@ public class LoginController implements Serializable {
             return "";
         }
         currentStudent = student.get();
-        return "standard";
+        return "/modules/standard.xhtml?faces-redirect=true";
     }
 
     public String personalData() {

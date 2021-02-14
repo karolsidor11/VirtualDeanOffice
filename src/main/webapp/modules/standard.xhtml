@@ -11,7 +11,7 @@
     <h:outputScript library="script" name="general.js"/>
     <h:outputStylesheet library="css" name="style.css"/>
 </h:head>
-<h:body onload="timer()">
+<h:body>
     <div id="headers">
         <div id="logo" style="float: left">
             <h:graphicImage
@@ -42,9 +42,9 @@
         </p:tab>
         <p:tab title="MOJE DANE">
             <div style="float: left">
-                <h:graphicImage style="width: 200px; align-content: center; height: 300px" library="image"
+                <h:graphicImage style="width: 250px; align-content: center; height: 300px" library="image"
                                 name="anonymous.jpg"/>
-                <div style="text-align: center;font-size: x-large; font-weight: bold">#{login.personalData()}</div>
+                <div style="text-align: center; font-size: x-large; font-weight: bold">#{login.personalData()}</div>
             </div>
             <div style="text-align: center">
                 <h1>Dane podstawowe</h1>
@@ -59,9 +59,6 @@
 
                         <h:outputText value="Email:"/>
                         <h:outputText value="#{login.currentStudent.email}"/>
-
-                        <h:outputText value="Hasło:"/>
-                        <h:outputText id="password" value="*******"/>
 
                         <h:outputText value="Płeć:"/>
                         <h:outputText value="#{login.currentStudent.gender}"/>
@@ -109,9 +106,10 @@
         </p:tab>
 
         <p:tab title="ZMIANA HASŁA" titleStyle="height: complex">
-            <h:outputText value="Not implemented yet."/>
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:outputText value="Not implemented yet."/>
+            </h:panelGrid>
         </p:tab>
     </p:tabView>
-
 </h:body>
 </html>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui" xmlns:composite="http://xmlns.jcp.org/jsf/composite">
+<h:head>
+    <title>Potwierdzenie rejestracji</title>
+    <h:outputScript library="script" name="general.js"/>
+    <h:outputStylesheet library="css" name="style.css"/>
+</h:head>
+
+<h:body onload="timer()">
+    <div>
+        <div>
+            <h:outputText id="date" styleClass="timer"> </h:outputText><br/>
+            <h:outputText id="time" styleClass="timer"> </h:outputText>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-2"></div>
+        <h2 style="text-align: center; color: darkblue; font-size: xx-large"
+            class="col-sm-4">Zweryfikuj wprowadzone dane</h2>
+    </div>
+
+    <script type="text/javascript">
+        /*  <![CDATA[ */
+        function init(value) {
+            const defautPassword = '*****';
+            if (value.innerText === defautPassword) {
+                document.getElementById('password').innerText = '#{register.student.password}';
+            } else {
+                document.getElementById('password').innerText = defautPassword;
+            }
+        }
+
+        /* ]]> */
+    </script>
+
+    <div style="text-align: center" class="col-sm-4">
+        <h:panelGrid columns="2" border="1" style="margin-right: auto; margin-left: auto; width: 35%">
+
+            <h:outputText value="Imie:"/>
+            <h:outputText value="#{register.student.name}"/>
+
+            <h:outputText value="Nazwisko:"/>
+            <h:outputText value="#{register.student.lastName}"/>
+
+            <h:outputText value="Email:"/>
+            <h:outputText value="#{register.student.email}"/>
+
+            <h:outputText value="Hasło:"/>
+            <h:outputText id="password" value="*****"/>
+
+            <h:outputText value="Płeć:"/>
+            <h:outputText value="#{register.student.gender}"/>
+
+            <h:outputText value="Państwo:"/>
+            <h:outputText value="#{register.adres.country}"/>
+
+            <h:outputText value="Miasto:"/>
+            <h:outputText value="#{register.adres.city}"/>
+
+            <h:outputText value="Ulica:"/>
+            <h:outputText value="#{register.adres.street}"/>
+
+            <h:outputText value="Kod pocztowy:"/>
+            <h:outputText value="#{register.adres.zipCode}"/>
+
+            <h:outputText value="Numer domu:"/>
+            <h:outputText value="#{register.adres.houseNumber}"/>
+
+        </h:panelGrid>
+    </div>
+    <br/><br/>
+    <div style="text-align: center" class="col-sm-4">
+        <h:form>
+            <p:commandButton style="background-color: dodgerblue" value="Powrót"
+                             action="#{register.backToForm()}"/> &nbsp; &nbsp;
+            <p:commandButton id="btn" style="background-color: dodgerblue" value="Pokaż hasło"
+                             onclick="init(document.getElementById('password'))">
+            </p:commandButton> &nbsp; &nbsp;
+            <p:commandButton style="background-color: dodgerblue" value="Potwierdzam"
+                             action="#{register.confirmRegister()}"/>
+        </h:form>
+    </div>
+</h:body>
+</html>
