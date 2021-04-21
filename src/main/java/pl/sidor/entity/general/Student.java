@@ -1,12 +1,9 @@
 package pl.sidor.entity.general;
 import lombok.*;
 import pl.sidor.entity.base.BaseEntity;
-import pl.sidor.entity.embeded.Adres;
+import pl.sidor.entity.embeded.Address;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Version;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
@@ -17,6 +14,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class Student extends BaseEntity implements Serializable {
+
+    private static final long serialVersionUID = -4620337437464005185L;
 
     @Column
     @NotNull
@@ -37,8 +36,11 @@ public class Student extends BaseEntity implements Serializable {
     @Column
     private String gender;
 
+    @Lob
+    private byte[] data;
+
     @Embedded
-    private Adres addres;
+    private Address addres;
 
     @Version
     private Long version;

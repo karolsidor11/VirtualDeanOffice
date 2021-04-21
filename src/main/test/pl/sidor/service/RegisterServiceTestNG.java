@@ -1,5 +1,6 @@
 package pl.sidor.service;
 
+import org.junit.Assert;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.testng.annotations.BeforeMethod;
@@ -25,10 +26,11 @@ public class RegisterServiceTestNG {
         Student student = TestData.createStudent();
 
         // when:
-        doNothing().when(registerService).registerStudent(student);
-        registerService.registerStudent(student);
+        when(registerService.registerStudent(student)).thenReturn(true);
+        boolean result = registerService.registerStudent(student);
 
         // then:
+        Assert.assertTrue(result);
         verify(registerService, times(1)).registerStudent(student);
     }
 }

@@ -34,7 +34,7 @@ public class RegisterControllerTest {
     @Test
     public void shouldConfirmRegister() {
         // given:
-        doNothing().when(registerService).registerStudent(TestData.createStudent());
+        when(registerService.registerStudent(TestData.createStudent())).thenReturn(true);
         controller.setStudent(TestData.createStudent());
         controller.setRegisterService(registerService);
 
@@ -47,6 +47,5 @@ public class RegisterControllerTest {
         assertEquals(controller.getStudent().getName(), TestData.createStudent().getName());
         assertEquals(controller.getStudent().getLastName(), TestData.createStudent().getLastName());
         assertEquals(controller.getStudent().getEmail(), TestData.createStudent().getEmail());
-        assertEquals(controller.getStudent().getAddres(), TestData.createStudent().getAddres());
     }
 }

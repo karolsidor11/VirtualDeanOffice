@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Wirtualny dziekanat-Rejestracja</title>
+    <h:outputScript library="script" name="general.js"/>
+    <h:outputStylesheet library="css" name="style.css"/>
+</h:head>
+
+<h:body onload="timer()">
+    <div>
+        <div>
+            <h:outputText id="date" styleClass="timer"> </h:outputText><br/>
+            <h:outputText id="time" styleClass="timer"> </h:outputText>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-2"></div>
+        <h2 style="text-align: center; color: darkblue ; font-size: xx-large"
+            class="col-sm-4">Dodaj zdjęcie do profilu</h2>
+    </div>
+
+    <div class="containers">
+        <h:form enctype="multipart/form-data">
+            <p:fileUpload fileUploadListener="#{register.upload}"
+                          mode="advanced"
+                          label="Wybierz"
+                          uploadLabel="Załącz"
+                          cancelLabel="Anuluj"
+                          dragDropSupport="false"
+                          update="messages"
+                          sizeLimit="5000000"
+                          fileLimit="3"
+                          allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
+
+            <h3>Maksymalny rozmiar: 5 MB</h3>
+            <br/><br/>
+            <div>
+                <p:commandButton style="background-color:#36a420; width: 245px; height: 40px; font-size: x-large"
+                                 styleClass="ui-priority-primary"
+                                 value="Wróć"
+                                 action="/modules/register.xhtml?faces-redirect=true"/>
+
+                <p:commandButton
+                        style="background-color:#36a420; width: 245px; height: 40px; margin-left:15px; font-size: x-large"
+                        styleClass="ui-priority-primary"
+                        update="@form"
+                        value="Zarejestruj się"
+                        action="/modules/verificationRegister.xhtml?faces-redirect=true"/>
+            </div>
+        </h:form>
+        <p:growl id="messages" showDetail="true"/>
+    </div>
+</h:body>
+</html>

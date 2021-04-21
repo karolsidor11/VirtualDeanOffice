@@ -9,8 +9,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 import static org.testng.Assert.*;
 
 public class RegisterControllerTestNG {
@@ -39,8 +38,9 @@ public class RegisterControllerTestNG {
     @Test
     public void shouldConfirmRegister(){
         // given:
-        doNothing().when(service).registerStudent(TestData.createStudent());
+        when(service.registerStudent(TestData.createStudent())).thenReturn(true);
         controller.setStudent(TestData.createStudent());
+        controller.setAddress(TestData.createAdres());
 
         // when:
         String url = controller.confirmRegister();

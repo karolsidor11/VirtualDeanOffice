@@ -22,7 +22,7 @@ public class RegisterServiceTest {
         Student student = TestData.createStudent();
 
         // when:
-        doNothing().when(registerService).registerStudent(student);
+        when(registerService.registerStudent(TestData.createStudent())).thenReturn(true);
         registerService.registerStudent(student);
 
         // then:

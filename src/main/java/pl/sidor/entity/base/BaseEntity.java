@@ -2,8 +2,6 @@ package pl.sidor.entity.base;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -14,12 +12,13 @@ import java.util.UUID;
 @MappedSuperclass
 public class BaseEntity implements Serializable {
 
+    private static final long serialVersionUID = 8550313881191062100L;
+
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "enhanced-sequence")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
+    @Column(unique = true, nullable = false)
     private UUID uuid = UUID.randomUUID();
 
     @Override

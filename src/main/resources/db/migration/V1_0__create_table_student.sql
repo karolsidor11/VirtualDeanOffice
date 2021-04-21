@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS `student`;
 
 CREATE TABLE `student`
 (
-    `id`          bigint        (20)        NOT NULL,
+    `id`          bigint        (20)        AUTO_INCREMENT NOT NULL,
     `uuid`        binary        (255)       DEFAULT NULL,
     `city`        varchar       (255)       DEFAULT NULL,
     `country`     varchar       (255)       DEFAULT NULL,
@@ -15,6 +15,7 @@ CREATE TABLE `student`
     `name`        varchar       (255)       DEFAULT NULL,
     `password`    varchar       (255)       DEFAULT NULL,
     `version`     bigint        (20)        DEFAULT NULL,
+    `data`        longblob                  DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8

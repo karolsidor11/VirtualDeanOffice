@@ -28,12 +28,15 @@
         </div>
 
         <div class="containers">
-            <h:form>
+            <h:form enctype="multipart/form-data">
                 <h:panelGrid columns="2" style=" margin: 0 auto;">
                     <p:outputLabel for="name"
                                    style="text-align: center;align-content: center">Wprowadź imię:</p:outputLabel>
                     <p:inputText id="name" value="#{register.student.name}"
-                                 placeholder="Imię" style="width: 240px;align-content: center">
+                                 placeholder="Imię"
+                                 required="true"
+                                 style="width: 240px;
+                                 align-content: center">
                         <f:validateLength minimum="2"/>
                         <f:param name="name" value="#{register.student.name}"/>
                     </p:inputText>
@@ -41,7 +44,10 @@
                     <p:outputLabel for="surname"
                                    style="text-align: center;align-content: center">Wprowadź nazwisko:</p:outputLabel>
                     <p:inputText id="surname" value="#{register.student.lastName}"
-                                 placeholder="Nazwisko" style="width: 240px;align-content: center">
+                                 placeholder="Nazwisko"
+                                 required="true"
+                                 style="width: 240px;
+                                 align-content: center">
                         <f:validateLength minimum="2"/>
                         <f:param name="surname" value="#{register.student.lastName}"/>
                     </p:inputText>
@@ -49,7 +55,10 @@
                     <p:outputLabel for="email"
                                    style="text-align: center;align-content: center">Wprowadź email:</p:outputLabel>
                     <p:inputText id="email" value="#{register.student.email}"
-                                 placeholder="Adres email" style="width: 240px;align-content: center">
+                                 placeholder="Adres email"
+                                 required="true"
+                                 style="width: 240px;
+                                 align-content: center">
                         <f:validateLength minimum="2"/>
                         <f:param name="email" value="#{register.student.email}"/>
                     </p:inputText>
@@ -57,55 +66,62 @@
                     <p:outputLabel for="password"
                                    style="text-align: center;align-content: center">Nowe hasło:</p:outputLabel>
                     <p:password id="password" value="#{register.student.password}"
-                                 placeholder="Hasło" style="width: 240px;align-content: center">
+                                placeholder="Hasło"
+                                required="true"
+                                style="width: 240px;
+                                align-content: center">
                         <f:validateLength minimum="2"/>
                         <f:param name="password" value="#{register.student.password}"/>
                     </p:password>
 
                     <p:outputLabel for="console" style="text-align: center;align-content: center">Płeć:</p:outputLabel>
-                    <p:selectOneRadio id="console" value="#{register.student.gender}" unselectable="true">
+                    <p:selectOneRadio id="console" value="#{register.student.gender}" unselectable="true"
+                                      required="true">
                         <f:selectItem itemLabel="Mężczyzna" itemValue="Mężczyzna"/>
                         <f:selectItem itemLabel="Kobieta" itemValue="Kobieta"/>
                     </p:selectOneRadio>
 
                     <p:outputLabel for="country"
                                    style="text-align: center; align-content: center">Państwo:</p:outputLabel>
-                    <p:selectOneMenu id="country" value="#{register.adres.country}" style="width: 91%">
+                    <p:selectOneMenu id="country" value="#{register.address.country}" style="width: 91%">
                         <f:selectItem itemLabel="Wybierz" itemValue=""/>
                         <f:selectItems value="#{register.getAllCountries()}"/>
                     </p:selectOneMenu>
 
                     <p:outputLabel for="city" style="text-align: center; align-content: center">Miasto:</p:outputLabel>
-                    <p:inputText id="city" value="#{register.adres.city}"
+                    <p:inputText id="city" value="#{register.address.city}"
                                  placeholder="Wprowadź miasto" style="width: 240px;align-content: center">
                         <f:validateLength minimum="2"/>
-                        <f:param name="city" value="#{register.adres.city}"/>
+                        <f:param name="city" value="#{register.address.city}"/>
                     </p:inputText>
 
                     <p:outputLabel for="street" style="text-align: center; align-content: center">Ulica:</p:outputLabel>
-                    <p:inputText id="street" value="#{register.adres.street}"
+                    <p:inputText id="street" value="#{register.address.street}"
                                  placeholder="Wprowadź ulicę" style="width: 240px;align-content: center">
                         <f:validateLength minimum="2"/>
-                        <f:param name="street" value="#{register.adres.street}"/>
+                        <f:param name="street" value="#{register.address.street}"/>
                     </p:inputText>
 
-                    <p:outputLabel for="zip-code" style="text-align: center; align-content: center">Kod pocztowy:</p:outputLabel>
-                    <p:inputMask id="zip-code" value="#{register.adres.zipCode}" mask="99-999" validateMask="true" style="width: 95%"/>
+                    <p:outputLabel for="zip-code"
+                                   style="text-align: center; align-content: center">Kod pocztowy:</p:outputLabel>
+                    <p:inputMask id="zip-code" value="#{register.address.zipCode}" mask="99-999" validateMask="true"
+                                 style="width: 95%"/>
 
-                    <p:outputLabel for="houseNumber" style="text-align: center; align-content: center">Numer domu:</p:outputLabel>
-                    <p:inputText id="houseNumber" value="#{register.adres.houseNumber}"
+                    <p:outputLabel for="houseNumber"
+                                   style="text-align: center; align-content: center">Numer domu:</p:outputLabel>
+                    <p:inputText id="houseNumber" value="#{register.address.houseNumber}"
                                  placeholder="Wprowadź kod pocztowy" style="width: 240px;align-content: center">
                         <p:keyFilter mask="num"/>
-                        <f:param name="houseNumber" value="#{register.adres.houseNumber}"/>
+                        <f:param name="houseNumber" value="#{register.address.houseNumber}"/>
                     </p:inputText>
                 </h:panelGrid>
                 <br/><br/>
-                <div>
-                    <p:commandButton style="background-color:#36a420; width: 245px; height: 40px; font-size: x-large"
-                                     styleClass="ui-priority-primary"
-                                     value="Zarejestruj się"
-                                     action="/modules/verificationRegister.xhtml?faces-redirect=true"/>
-                </div>
+
+                <p:commandButton style="background-color:#36a420; width: 245px; height: 40px; font-size: x-large"
+                                 styleClass="ui-priority-primary"
+                                 update="@form"
+                                 value="Dalej"
+                                 action="/modules/registerImg.xhtml?faces-redirect=true"/>
             </h:form>
         </div>
     </div>

@@ -1,14 +1,14 @@
-package pl.sidor.util;
+package pl.sidor.utils;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertNotNull;
 
-public class StringUtilTest {
+public class StringUtilTestNG {
 
     @Test
-    public void convertMD5() {
+    public void testConvertMD5() {
         // given:
         String password = "password";
 

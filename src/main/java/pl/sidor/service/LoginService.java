@@ -5,30 +5,45 @@ import pl.sidor.connection.DatabaseConnection;
 import pl.sidor.entity.general.Student;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class LoginService {
 
     private EntityManager entityManager = DatabaseConnection.getInstance();
 
+    /**
+     * Method searches for a student on the basis of email and password
+     * @param email
+     * @param password
+     * @return Optional student
+     */
     public Optional<Student> findStudentByEmialAndPassword(String email, String password) {
-        Query query = entityManager.createQuery("select s from Student s where s.email=:email and s.password=:password");
+        TypedQuery<Student> query = entityManager.createQuery("select s from Student s where s.email=:email and s.password=:password", Student.class);
         query.setParameter("email", email);
         query.setParameter("password", password);
 
-        if (query.getResultList().isEmpty()) {
-            return Optional.absent();
-        }
-        return Optional.fromNullable((Student) query.getResultList().get(0));
+        return getOptionalStudent(query.getResultList());
     }
 
-    public Optional<Student> findStudentByEmail(String email){
-        Query query = entityManager.createQuery("select s from Student s where s.email=:email");
+    /**
+     * Method searches for a student on the basis of email
+     * @param email
+     * @return Optional student
+     */
+    public Optional<Student> findStudentByEmail(String email) {
+        TypedQuery<Student> query = entityManager.createQuery("select s from Student s where s.email=:email", Student.class);
         query.setParameter("email", email);
 
-        if (query.getResultList().isEmpty()) {
-            return Optional.absent();
-        }
-        return Optional.fromNullable((Student) query.getResultList().get(0));
+        return getOptionalStudent(query.getResultList());
+    }
+
+    /**
+     * Method get Optional student
+     * @param resultList
+     * @return Optional student
+     */
+    private Optional<Student> getOptionalStudent(List<Student> resultList) {
+        return resultList.isEmpty() ? Optional.<Student>absent(): Optional.fromNullable(resultList.get(0));
     }
 }
