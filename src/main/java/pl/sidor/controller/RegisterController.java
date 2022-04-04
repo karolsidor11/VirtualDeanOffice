@@ -118,8 +118,8 @@ public class RegisterController implements Serializable {
      */
     @SneakyThrows
     private void saveImge(Student student) {
-        BufferedImage image = ImageIO.read(new ByteArrayInputStream(student.getData()));
-        if (image != null) {
+        if (student != null && student.getData() != null) {
+            BufferedImage image = ImageIO.read(new ByteArrayInputStream(student.getData()));
             createDictionaryIfNotExists();
             ImageIO.write(image, "JPG", new File(IMAGE_LOCATION + student.getEmail() + ".jpg"));
         }

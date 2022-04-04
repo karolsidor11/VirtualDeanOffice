@@ -114,11 +114,13 @@ public class LoginController implements Serializable {
     @SneakyThrows
     private void prepareStudentData(Student student) {
         this.currentStudent = student;
-        InputStream inputStream = new ByteArrayInputStream(currentStudent.getData());
-        image = new DefaultStreamedContent(inputStream, CONTENT_TYPE);
+        if (currentStudent != null && currentStudent.getData() != null) {
+            InputStream inputStream = new ByteArrayInputStream(currentStudent.getData());
+            image = new DefaultStreamedContent(inputStream, CONTENT_TYPE);
+        }
     }
 
-   //TODO Zrealizować wczytywanie domyślengo obrazu
+    //TODO Zrealizować wczytywanie domyślengo obrazu
     private DefaultStreamedContent getDefaultImage() {
         return null;
     }
